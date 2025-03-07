@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
+from django.contrib.auth.models import AbstractUser
 
 
 class Status(models.Model):

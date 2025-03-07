@@ -1,8 +1,58 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home {% endblock title %}
 
 
 {% block content %}
-<h1>This is the home page </h1>
+<div class="gallery-container">
+    <div class="picture-container">
+        <div class="dashboard-picture">
+            <h6>History</h6>
+            <img class="picture" src="{% static 'img/Line_graph4.png' %}" alt="">
+        </div>
+        <div class="dashboard-picture">
+            <h6>Tickets</h6>
+            <img class="picture" src="{% static 'img/ticket_funnel3.png' %}" alt="">
+        </div>       
+    </div>
+    <div class="picture-container">
+        <div class="dashboard-picture">
+            <h6>Goals</h6>
+            <img  class="picture" src="{% static 'img/metrics2.png' %}" alt="">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <table class="table table-dark table-striped table1">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
 {% endblock content %}

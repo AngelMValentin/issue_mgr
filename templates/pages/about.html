@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}About {% endblock title %}
 
 
 {% block content %}
-<h1>This is the about page </h1>
+<img class='hero' src="{% static 'img/AboutPage_Hero2.png' %}" alt="">
 {% endblock content %}
