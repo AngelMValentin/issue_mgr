@@ -15,7 +15,7 @@ class Status(models.Model):
 class Issue(models.Model):
     name = models.CharField(max_length=64)
     summary = models.CharField(max_length=128)
-    description = models.TextField
+    description = models.TextField(default="No description provided")
     reporter = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE

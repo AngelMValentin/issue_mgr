@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 from django.contrib.auth.mixins import (
     LoginRequiredMixin
 )
 from django.views.generic import (
-    ListView
+    ListView, UpdateView, CreateView, DeleteView, DetailView
 )
+from django.urls import reverse_lazy
 from .models import Issue, Status 
 
 from accounts.models import Role, CustomUser
@@ -49,5 +50,33 @@ class IssueListView(LoginRequiredMixin, ListView):
             .order_by("created_on").reverse()
         )
         return context
+    
+
+class IssueCreateView(LoginRequiredMixin, CreateView):
+    model = Issue
+    template_name = "issues/new.html"
+    fields = ["name", "summary", "description", "reporter", "assignee", "status"]
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user 
+        form.save()
+        return redirect("issue-detail", pk=form.instance.pk)
+    
+class IssueUpdateView(LoginRequiredMixin, UpdateView):
+    model = Issue
+    template_name = "issues/edit.html"
+    fields = ["name", "summary", "description", "reporter", "assignee", "status"]
+
+    def get_success_url(self):
+        return reverse_lazy("tickets")
+
+class IssueDeleteView(LoginRequiredMixin, DeleteView):
+    model = Issue
+    template_name = "issues/delete.html"
+    success_url = reverse_lazy("tickets")
+
+class IssueDetailView(LoginRequiredMixin, DetailView):
+    model = Issue
+    template_name = "issues/detail.html"
 
 # Create your views here.
