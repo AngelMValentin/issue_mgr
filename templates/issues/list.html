@@ -4,17 +4,31 @@
 
 {% block content %}
 <h1 class="text-center">View all tickets</h1>
-{% for issue in issue_list %}
-<div class="card m-auto mb-3" style="width: 15rem; min-height: 10rem;">
-    <div class="card-body">
-      <h5>{{ issue.name }}</h5>
-      <p class="">Reporter: {{ issue.reporter }}</p>
-      <p class="">Summary: {{ issue.summary }}</p>
-      <p class="">Assignee: {{ issue.assignee }}</p>
-      <p class="">Status: {{ issue.status }}</p>
-      <a href="{% url 'issue-delete' issue.id %}" class="btn btn-outline-danger">Delete</a>
-      <a href="{% url 'issue-update' issue.id %}" class="btn btn-outline-info">Edit</a>
-    </div>
-</div>
-{% endfor %}
+<br>
+<table class="table table-dark table-striped ticket-table">
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Reporter</th>
+          <th>Summary</th>
+          <th>Assignee</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for issue in issue_list %}
+      <tr>
+          <td>{{ issue.name }}</td>
+          <td>{{ issue.reporter }}</td>
+          <td>{{ issue.summary }}</td>
+          <td>{{ issue.assignee }}</td>
+          <td>{{ issue.status }}</td>
+          <td>
+              <a href="{% url 'issue-delete' issue.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+              <a href="{% url 'issue-update' issue.id %}" class="btn btn-outline-info btn-sm">Edit</a>
+          </td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
 {% endblock content %}
