@@ -5,13 +5,13 @@
 {% block content %}
 <h1 class="text-center">View all tickets</h1>
 {% for issue in issue_list %}
-<div class="card m-auto mb-3" style="width: 30rem;">
+<div class="card m-auto mb-3" style="width: 15rem; min-height: 10rem;">
     <div class="card-body">
-      <h5 class="card-title">{{ issue.name }}</h5>
-      <p class="card-text">{{ issue.summary }}</p>
-      <p class="card-text">{{ issue.reporter }}</p>
-      <p class="card-text">{{ issue.assignee }}</p>
-      <p class="card-text">{{ issue.status }}</p>
+      <h5>{{ issue.name }}</h5>
+      <p class="">Reporter: {{ issue.reporter }}</p>
+      <p class="">Summary: {{ issue.summary }}</p>
+      <p class="">Assignee: {{ issue.assignee }}</p>
+      <p class="">Status: {{ issue.status }}</p>
       <a href="{% url 'issue-delete' issue.id %}" class="btn btn-outline-danger">Delete</a>
       <a href="{% url 'issue-update' issue.id %}" class="btn btn-outline-info">Edit</a>
     </div>

@@ -14,9 +14,18 @@ a {
     text-decoration: none; 
 }
 
-a:hover {
+li {
+    color: lightgray !important;
+}
+.form-text {
+    color: lightgray !important;
+}
+
+#anchor-tags:hover {
     background: linear-gradient(45deg, #0094f670, #f5598b6b) !important;
 }
+
+
 
 h1 {
     color: #E4E4E4 !important;

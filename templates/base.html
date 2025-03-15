@@ -9,9 +9,12 @@
     <link href="{% static 'issue_mgr/css/base.css' %}" rel="stylesheet">
 </head>
 <body id="main-body">
-    <nav id="main-body" class="navbar navbar-expand-lg">
+    <nav id="main-body" class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
-        <a id="anchor-tags" class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+
+        <a id="logo" class="navbar-brand" href="{% url 'home' %}">
+          <img style="width: 3rem; height: 3rem;" src="{% static 'img/Godzilla.png' %}" alt="an animated picture of Godzilla">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,12 +27,12 @@
             {% if user.is_authenticated %}
             <form method="POST" action="{% url 'logout' %}">
               {% csrf_token %}
-              <input value='logout' class='nav-link' type="submit">
+              <input value='Logout' id='anchor-tags' class='nav-link text-light' type="submit">
             </form>
-            <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
+            <a class="nav-link text-light" id="anchor-tags" href="{% url 'password_change' %}">Change Password</a>
             {% else %}
-            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-            <a class='nav-link' href="{% url 'login' %}">Log In</a>
+            <a id="anchor-tags" class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+            <a id="anchor-tags" class='nav-link' href="{% url 'login' %}">Log In</a>
             {% endif %}
           </div>
         </div>
@@ -39,5 +42,6 @@
       {% block content %}
       {% endblock content %}
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
